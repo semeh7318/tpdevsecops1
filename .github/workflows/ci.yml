@@ -60,13 +60,13 @@ jobs:
           curl -f http://localhost:8080 || echo "App not responding"
           docker stop democyber-test
           docker rm democyber-test
-      # Build Docker image for security scanning
-      - name: Build Docker image for Trivy
+      # Build Docker image for Trivy
+      - name: Build Docker image
         run: docker build -t democyber:latest .
 
       # Scan Docker image with Trivy
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: democyber:latest
           format: 'table'
